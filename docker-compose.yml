@@ -1,0 +1,16 @@
+# docker-compose.yml
+version: '3'
+services:
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=nieshah
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=school_db_alpha
+    ports:
+      - '5454:5432'
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

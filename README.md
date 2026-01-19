@@ -21,15 +21,82 @@ Endpoints:
 ## Project Setup
 
 01. Create Repo + venv
+clone git repo 
+{content: }
+
+#creating venv
+mkdir school-api
+cd school-api
+python -m venv venv
+source venv/bin/activate   # mac/linux
+pip install django psycopg2-binary djangorestframework
+pip freeze > requirements.txt
+
+{content: }
+
 01.1 Start Project + apps
+### Install Django
+{content: }
+# installing Django
+    pip install django
+    
+    # creating project
+    django-admin startproject school_proj .
+    
+    # creating apps
+    python manage.py startapp student_app
+    python manage.py startapp class_app
+    python manage.py startapp grade_app
+
+{content: }
+
+### Docker Compose yaml
+Create the following in school-api root directory
+
+{content: }
+# docker-compose.yml
+version: '3'
+services:
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=school_db
+    ports:
+      - '5454:5432'
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+
 
 ## Part I - Configure Django
 
 1.1 settings.py : Installed apps
+{content: }
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+
+    "rest_framework",
+
+    "student_app",
+    "class_app",
+    "grade_app",
+]
+
+{content: }
+
 1.2 Database config (Postgres in Docker)
 school_proj/settings.py
 
-Notion Reference for code: 
+Notion Reference for code: https://www.notion.so/BUILD-GUIDE-SCHOOL-API-2edf93b2f800801192f8d97ec53b9a37
 
 ## Part II - Models + Relationships (Student, Class, Grade)
 
