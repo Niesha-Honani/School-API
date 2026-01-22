@@ -30,9 +30,6 @@ cd school-api
 python -m venv venv
 source venv/bin/activate   # mac/linux
 
-pip install django psycopg2-binary djangorestframework
-
-pip freeze > requirements.txts
 ```
 ## Setup: Django, Project, App (Models)
 
@@ -41,6 +38,8 @@ pip freeze > requirements.txts
     pip install django
     pip install djangorestframework
     pip install psycopg[binary]
+
+    pip freeze > requirements.txt
     
     # creating project
     django-admin startproject school_proj .
