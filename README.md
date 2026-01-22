@@ -19,8 +19,8 @@ Endpoints:
 
 ## Project Setup
 
-01. Create Repo + venv
-
+### Create Repo + venv
+```
 git clone <repo>
 
 #creating venv
@@ -33,11 +33,14 @@ source venv/bin/activate   # mac/linux
 pip install django psycopg2-binary djangorestframework
 
 pip freeze > requirements.txts
+```
+## Setup: Django, Project, App (Models)
 
-01.1 Start Project + apps
-### Install Django
-# installing Django
+```
+    # install Django
     pip install django
+    pip install djangorestframework
+    pip install psycopg[binary]
     
     # creating project
     django-admin startproject school_proj .
@@ -46,7 +49,7 @@ pip freeze > requirements.txts
     python manage.py startapp student_app
     python manage.py startapp class_app
     python manage.py startapp grade_app
-
+```
 ### Docker Compose yaml
 Create the following in school-api root directory
 ```
@@ -90,7 +93,25 @@ INSTALLED_APPS = [
 ```
 
 1.2 Database config (Postgres in Docker)
+### Edit Project settings
 school_proj/settings.py
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "school_db_alpha",
+        'USER': "nieshah",
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+        'PORT': '5454',
+    }
+}
+```
+
+### Run
+```
+docker compose up
+```
 
 Notion Reference for code: https://www.notion.so/BUILD-GUIDE-SCHOOL-API-2edf93b2f800801192f8d97ec53b9a37
 
