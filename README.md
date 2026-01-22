@@ -136,8 +136,7 @@ def validate_something(value:str):
 ```
     python manage.py makemigrations
     python manage.py migrate
-
-```s
+```
 
 ## Part VI - API Endpoints (API 1-6)
 ### What tests usuall expect 
