@@ -3,7 +3,7 @@
 ## Rebuild Guide (From Scratch)
 
 ### Build L* 
-* udent_app -> Student model + validators + student endpoints
+* student_app -> Student model + validators + student endpoints
 * class_app -> Class model + validators + class endpoints
 * grade_app -> Grade model + validators + grade endpoints
 
