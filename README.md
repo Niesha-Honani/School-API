@@ -2,9 +2,8 @@
 
 ## Rebuild Guide (From Scratch)
 
-### Build List
-
-* student_app -> Student model + validators + student endpoints
+### Build L* 
+* udent_app -> Student model + validators + student endpoints
 * class_app -> Class model + validators + class endpoints
 * grade_app -> Grade model + validators + grade endpoints
 
@@ -149,24 +148,23 @@ API 6 "detail" endpoints
 * /api/v1/classes/<subject>/
 
 ## Part VII - URL Wiring
-7.1 school_proj/urls.py
-7.2 school_proj/api_urls.py  (details endpoints)
-
+* school_proj/urls.py
+* school_proj/api_urls.py  (details endpoints)
 
 ## PART VII - List Endpoints (reverse names)
-8.1 class_app/urls.py
-8.2 student_app/urls.py
+* class_app/urls.py
+* student_app/urls.py
 
 NOTE: Do NOT SET APP_NAME in these urls.py if tests do reverse("all_classes")
 without namespace Example student_app = "student_app"
 
 ## PART IX - List Views
-9.1 class_app/views.py
-9.2 student_app/views.py
+* class_app/views.py
+* student_app/views.py
 
 ## PART X - API 6 Detail View (FBV)
-10.1 student_app/api_views.py
-10.2 class_app/api_views.py
+* student_app/api_views.py
+* class_app/api_views.py
 
 ## PART XI - Admin Setup
 ```
@@ -177,7 +175,7 @@ Register models:
 * student_app/admin.py
 * class_app/admin.py
 
-Restart server : python manage.py runserver 
-
-
-
+Restart server : 
+```
+python manage.py runserver 
+```
