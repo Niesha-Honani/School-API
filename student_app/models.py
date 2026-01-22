@@ -1,20 +1,31 @@
 from django.db import models
-
+from django.core.validators import EmailValidator
 # Create your models here.
+ALLOWED_DOMAINS = ['school.com']
 
 class Student(models.Model):
     # Fields for student_app
-    name = models.CharField(max_length=255)
-    student_email = models.CharField(max_length=255)
-    personal_email = models.CharField(max_length=255)
-    locker_number = models.IntegerField(unique=True)
-    locker_combination = models.CharField(default="12-12-12")
+    name = models.CharField(max_length=255, null=False)
+    student_email = models.EmailField(
+            max_length=255,
+            unique=True,
+            null=False,
+            validators=[
+                EmailValidator(allowlist=ALLOWED_DOMAINS)
+                ]
+            )
+    personal_email = models.EmailField(
+            max_length=255,
+            unique=True,
+            )
+    locker_number = models.IntegerField(null=False, unique=True, default=110)
+    locker_combination = models.CharField(max_length=255, default="12-12-12",
+    null=False, unique=False)
 
     good_student=models.BooleanField(unique = False, default=True)
-    
+
     # foreign key class model
     #classes = models.ManyToManyField('class_app.Class', related_name='students')
-
 
     # __str__ method : Returns student name, student email and locker number as
     # "John W. Watson - johnnyBoy@school.com - 137"

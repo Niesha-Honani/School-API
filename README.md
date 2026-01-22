@@ -13,30 +13,30 @@
 3. Endpoints
 
 Endpoints:
- revers("all_students") -> returns list of students (fixture style)
- revers("all_classes") -> returns list of classes (fixture style)
- /api/v1/students/<pk>/ -> nested student detail format
- /api/v1/classes/<subject>/ -> nested class detail format
+* reverse("all_students") -> returns list of students (fixture style)
+* reverse("all_classes") -> returns list of classes (fixture style)
+* /api/v1/students/<pk>/ -> nested student detail format
+* /api/v1/classes/<subject>/ -> nested class detail format
 
 ## Project Setup
 
 01. Create Repo + venv
-clone git repo 
-{content: }
+
+git clone <repo>
 
 #creating venv
+
 mkdir school-api
 cd school-api
 python -m venv venv
 source venv/bin/activate   # mac/linux
-pip install django psycopg2-binary djangorestframework
-pip freeze > requirements.txt
 
-{content: }
+pip install django psycopg2-binary djangorestframework
+
+pip freeze > requirements.txts
 
 01.1 Start Project + apps
 ### Install Django
-{content: }
 # installing Django
     pip install django
     
@@ -47,8 +47,6 @@ pip freeze > requirements.txt
     python manage.py startapp student_app
     python manage.py startapp class_app
     python manage.py startapp grade_app
-
-{content: }
 
 ### Docker Compose yaml
 Create the following in school-api root directory
