@@ -50,30 +50,29 @@ pip freeze > requirements.txts
 
 ### Docker Compose yaml
 Create the following in school-api root directory
+```
+ # docker-compose.yml
+  version: '3'
+  services:
+    db:
+      image: postgres:15
+      environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_DB=school_db
+      ports:
+        - '5454:5432'
+      volumes: 
+        - postgres_data:/var/lib/postgresql/data
 
-{content: }
-# docker-compose.yml
-version: '3'
-services:
-  db:
-    image: postgres:15
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=school_db
-    ports:
-      - '5454:5432'
-    volumes: 
-      - postgres_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_data:
-
+  volumes:
+    postgres_data:
+```
 
 ## Part I - Configure Django
 
 1.1 settings.py : Installed apps
-{content: }
+```
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -89,7 +88,7 @@ INSTALLED_APPS = [
     "grade_app",
 ]
 
-{content: }
+```
 
 1.2 Database config (Postgres in Docker)
 school_proj/settings.py
@@ -117,7 +116,7 @@ Notion Reference for code: https://www.notion.so/BUILD-GUIDE-SCHOOL-API-2edf93b2
 3.3 grade_app/validators
 
 ### Validator Code Snippet
-...
+```
 import re
 from django.core.exceptions import ValidationError
 from django.code.validators import MinValueValidator, MaxValueValidator
@@ -126,7 +125,7 @@ def validate_something(value:str):
     # Example: "John W. Watson " must be First M. Last format 
     if not match(pattern, value):
         raise ValidationError("Name must be in 'First M. Last' format.")
-...
+```
 
 ## Part IV - Build Models 
 ** KEY RULE ** 
@@ -134,11 +133,11 @@ def validate_something(value:str):
 - In Class, references Student using string: "student_app.Student"
 
 ## Part V - Migrations
-...
+```
     python manage.py makemigrations
     python manage.py migrate
 
-...
+``
 
 ## Part VI - API Endpoints (API 1-6)
 ### What tests usuall expect 
@@ -171,13 +170,15 @@ without namespace Example student_app = "student_app"
 10.2 class_app/api_views.py
 
 ## PART XI - Admin Setup
-...
+```
 python manage.py createsuperuser
-...
+```
 
 Register models:
-student_app/admin.py
-class_app/admin.py
+* student_app/admin.py
+* class_app/admin.py
+
+Restart server : python manage.py runserver 
 
 
 
